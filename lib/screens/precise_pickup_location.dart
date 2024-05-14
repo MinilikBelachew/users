@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:geocoder2/geocoder2.dart';
@@ -137,16 +138,27 @@ class _PrecisePickUpScreenState extends State<PrecisePickUpScreen> {
                 color: Colors.pink,
               ),
               padding: const EdgeInsets.all(20), // Corrected spelling: EdgeInsets.all(20)
-              child: Text(
-                Provider.of<AppInfo>(context).userPickUpLocation!= null
-                ? "${(Provider.of<AppInfo> (context).userPickUpLocation!.locationName!).substring(0,24)}..."
-                : "Not Getting Address",
-
-
+              child:
+              Text(
+                Provider.of<AppInfo>(context).userPickUpLocation != null && Provider.of<AppInfo>(context).userPickUpLocation!.locationName != null
+                    ? "${Provider.of<AppInfo>(context).userPickUpLocation!.locationName!}..."
+                    : "Not Getting Address",
                 overflow: TextOverflow.visible,
                 softWrap: true,
-                // Corrected spelling: softWrap
+                style: TextStyle(color: Colors.brown, fontSize: 14),
               ),
+
+
+              // Text(
+              //   Provider.of<AppInfo>(context).userPickUpLocation!= null
+              //   ? "${(Provider.of<AppInfo> (context).userPickUpLocation!.locationName!).substring(0,24)}..."
+              //   : "Not Getting Address",
+              //
+              //
+              //   overflow: TextOverflow.visible,
+              //   softWrap: true,
+              //   // Corrected spelling: softWrap
+              // ),
             ),
           ),
 

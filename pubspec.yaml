@@ -53,6 +53,7 @@ dependencies:
   animated_text_kit:
   smooth_star_rating_nsafe:
   provider:
+  url_launcher:
 
 
 dev_dependencies:

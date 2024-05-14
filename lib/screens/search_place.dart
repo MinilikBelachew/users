@@ -18,7 +18,7 @@ class _SearchPlaceState extends State<SearchPlace> {
   findPlaceAutoComplete(String inputText) async {
 
     if(inputText.length>1){
-      String urlAutoCompleteSearch= "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$inputText&key=$apiKey&components=country:BO";
+      String urlAutoCompleteSearch= "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$inputText&key=$apiKey&components=country:ET";
     var responseAutoCompleteSearch=await RequestAssistant.receiveRequest(urlAutoCompleteSearch);
 
 
@@ -26,8 +26,13 @@ class _SearchPlaceState extends State<SearchPlace> {
         return;
       }
       if(responseAutoCompleteSearch["status"] =="OK"){
-        var placePredictions=responseAutoCompleteSearch["predicctions"];
-        var placePredictionList=(placePredictions as List).map((jsonData) => PredictedPlaces.fromJson(jsonData)).toList();
+        var placePredictions = responseAutoCompleteSearch["predictions"]; // Corrected "predicctions" to "predictions"
+        var placePredictionList = (placePredictions as List)
+            .map((jsonData) => PredictedPlaces.fromJson(jsonData))
+            .toList();
+
+        // var placePredictions=responseAutoCompleteSearch["predicctions"];
+        // var placePredictionList=(placePredictions as List).map((jsonData) => PredictedPlaces.fromJson(jsonData)).toList();
 
         setState(() {
           placePredictedList=placePredictionList;
@@ -100,7 +105,8 @@ class _SearchPlaceState extends State<SearchPlace> {
                             },
                             decoration: const InputDecoration(
                               hintText: "Search Location Here",
-                              fillColor: Colors.black87,
+
+                              fillColor: Colors.transparent,
                               filled: true,
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(

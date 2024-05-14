@@ -64,7 +64,7 @@ class _PredicatedPlaceDesignState extends State<PredicatedPlaceDesign> {
         child: Row(
           children: [
             Icon(Icons.add_location,
-                color: darkTheme ? Colors.lightBlue : Colors.amber),
+                color: darkTheme ? Colors.lightBlue : Colors.blue),
             const SizedBox(
               width: 10,
             ),
@@ -77,15 +77,17 @@ class _PredicatedPlaceDesignState extends State<PredicatedPlaceDesign> {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       fontSize: 16,
-                      color: darkTheme ? Colors.blueAccent : Colors.red),
+                      color: darkTheme ? Colors.white : Colors.black),
                 ),
                 Text(
-                  widget.predictedPlaces!.secondery_text!,
+                  widget.predictedPlaces?.secondery_text ?? "", // Use null-aware operator and provide a default value
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontSize: 16,
-                      color: darkTheme ? Colors.blueAccent : Colors.red),
+                    fontSize: 16,
+                    color: darkTheme ? Colors.blueAccent : Colors.red,
+                  ),
                 ),
+
               ],
             ))
           ],
